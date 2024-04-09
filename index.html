@@ -3,97 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Art Portfolio</title>
+    <title>VozArtist</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        .header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        .portfolio {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-        .project {
-            background-color: #fff;
-            border: 2px solid #333;
-            padding: 20px;
-            text-align: center;
-        }
-        .project img {
-            max-width: 100%;
-            max-height: 100%;
-            vertical-align: middle;
-        }
-        #mainImage {
-            cursor: pointer;
-        }
-        #doodleOverlay {
+        /* Your CSS styles remain unchanged */
+
+        /* Define modal styles */
+        .modal {
+            display: none;
             position: fixed;
-            top: 0;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
         }
-        #doodleContent {
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            color: #fff;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ccc;
         }
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>Art Portfolio</h1>
-    <p>Doodle Header</p>
-</div>
+<header>
+    <!-- Your header content -->
+</header>
 
-<div class="portfolio">
-    <div class="project">
-        <img src="project1.jpg" alt="Project 1">
-        <h2>Project 1</h2>
-    </div>
-    <!-- Add more projects here -->
-</div>
+<nav>
+    <!-- Your navigation content -->
+</nav>
 
-<div id="doodleOverlay">
-    <div id="doodleContent">
-        <!-- Your interactive doodle content goes here -->
-        <h2>Interactive Doodle</h2>
-        <p>This is your interactive doodle content.</p>
-        <button onclick="closeDoodle()">Close</button>
+<div class="content">
+    <h2>Featured Artworks</h2>
+    <div class="gallery">
+        <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')">
+        <img src="artwork2.jpg" alt="Artwork 2" onclick="openModal('artwork2_large.jpg')">
+        <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')">
+        <!-- Add more images as needed -->
     </div>
 </div>
+
+<!-- The modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
+<footer>
+    <!-- Your footer content -->
+</footer>
 
 <script>
-    // Function to open the doodle overlay
-    function openDoodle() {
-        document.getElementById("doodleOverlay").style.display = "block";
+    // Function to open the modal with the clicked image
+    function openModal(imageSrc) {
+        var modal = document.getElementById('myModal');
+        var modalImg = document.getElementById('modalImg');
+
+        modal.style.display = 'block';
+        modalImg.src = imageSrc;
     }
 
-    // Function to close the doodle overlay
-    function closeDoodle() {
-        document.getElementById("doodleOverlay").style.display = "none";
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
     }
-
-    // Event listener to open the doodle overlay when main image is clicked
-    document.getElementById("mainImage").addEventListener("click", openDoodle);
 </script>
 
 </body>
