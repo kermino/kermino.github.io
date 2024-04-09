@@ -3,48 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VozArtist</title>
+    <title>Your Art Portfolio</title>
     <style>
         /* Your CSS styles remain unchanged */
 
-        /* Define modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            max-height: 80%;
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-        }
-
-        .close {
-            color: #fff;
-            position: absolute;
-            top: 10px;
-            right: 25px;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: #ccc;
+        /* Add hover effect for images in the gallery */
+        .gallery img:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
@@ -61,14 +27,14 @@
 <div class="content">
     <h2>Featured Artworks</h2>
     <div class="gallery">
-        <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')">
-        <img src="artwork2.jpg" alt="Artwork 2" onclick="openModal('artwork2_large.jpg')">
-        <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')">
+        <!-- Customize your gallery by adding your own images -->
+        <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+        <img src="artwork2.jpg" alt="Artwork 2" onclick="openModal('artwork2_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+        <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
         <!-- Add more images as needed -->
     </div>
 </div>
 
-<!-- The modal -->
 <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="modalImg">
@@ -91,6 +57,17 @@
     // Function to close the modal
     function closeModal() {
         document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Function to zoom in when hovering over an image
+    function zoomIn(img) {
+        img.style.transform = 'scale(1.05)';
+        img.style.transition = 'transform 0.3s ease';
+    }
+
+    // Function to zoom out when hovering out of an image
+    function zoomOut(img) {
+        img.style.transform = 'scale(1)';
     }
 </script>
 
