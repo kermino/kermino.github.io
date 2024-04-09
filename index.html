@@ -9,70 +9,93 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f0f0f0;
         }
-
-        header {
+        .header {
             background-color: #333;
-            color: #fff;
-            padding: 20px;
+            color: white;
             text-align: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 20px;
+            margin-bottom: 20px;
         }
-
-        .artwork {
+        .portfolio {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
         }
-
-        .artwork-item {
-            border: 1px solid #ccc;
-            padding: 10px;
+        .project {
+            background-color: #fff;
+            border: 2px solid #333;
+            padding: 20px;
             text-align: center;
         }
-
-        .artwork-item img {
+        .project img {
             max-width: 100%;
-            height: auto;
+            max-height: 100%;
+            vertical-align: middle;
         }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        #mainImage {
+            cursor: pointer;
+        }
+        #doodleOverlay {
             position: fixed;
-            bottom: 0;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        #doodleContent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Art Portfolio</h1>
-    </header>
 
-    <div class="container">
-        <div class="artwork">
-            <div class="artwork-item">
-                <img src="artwork1.jpg" alt="Artwork 1">
-                <p>Artwork 1 Description</p>
-            </div>
-            <div class="artwork-item">
-                <img src="artwork2.jpg" alt="Artwork 2">
-                <p>Artwork 2 Description</p>
-            </div>
-            <!-- Add more artwork items as needed -->
-        </div>
+<div class="header">
+    <h1>Art Portfolio</h1>
+    <p>Doodle Header</p>
+</div>
+
+<div class="portfolio">
+    <div class="project">
+        <img src="project1.jpg" alt="Project 1">
+        <h2>Project 1</h2>
     </div>
+    <!-- Add more projects here -->
+</div>
 
-    <footer>
-        <p>&copy; 2024 Art Portfolio. All rights reserved.</p>
-    </footer>
+<div id="doodleOverlay">
+    <div id="doodleContent">
+        <!-- Your interactive doodle content goes here -->
+        <h2>Interactive Doodle</h2>
+        <p>This is your interactive doodle content.</p>
+        <button onclick="closeDoodle()">Close</button>
+    </div>
+</div>
+
+<script>
+    // Function to open the doodle overlay
+    function openDoodle() {
+        document.getElementById("doodleOverlay").style.display = "block";
+    }
+
+    // Function to close the doodle overlay
+    function closeDoodle() {
+        document.getElementById("doodleOverlay").style.display = "none";
+    }
+
+    // Event listener to open the doodle overlay when main image is clicked
+    document.getElementById("mainImage").addEventListener("click", openDoodle);
+</script>
+
 </body>
 </html>
+
