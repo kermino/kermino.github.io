@@ -59,15 +59,13 @@
 
         /* Style for canvas */
         canvas {
-            border: 0px solid #333;
+            border: 1px solid #333;
             border-radius: 0px;
             margin-top: 20px;
             cursor: crosshair;
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 100%;
-            height: 30px;
         }
     </style>
 </head>
@@ -101,13 +99,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="carousel_image1.jpg" alt="First slide">
+                    <img class="d-block w-100" src="carousel_image1.jpg" alt="zoo">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="carousel_image2.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="carousel_image2.jpg" alt="wee">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="carousel_image3.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="carousel_image3.jpg" alt="mama">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -126,7 +124,7 @@
     </nav>
 
     <div class="content">
-        <h2 class="text-center">Featured Artworks</h2>
+        <h2 class="text-center"></h2>
         <div class="gallery">
             <!-- Customize your gallery by adding your own images -->
             <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
@@ -187,16 +185,25 @@
         var y = e.clientY - rect.top;
 
         ctx.strokeStyle = 'teal'; // Set line color to teal
-        ctx.lineWidth = 2; // Set line width
+        ctx.lineWidth = 10; // Set line width
         ctx.lineCap = 'round'; // Set line cap style
 
         // Start drawing path
         ctx.beginPath();
         ctx.moveTo(x, y);
-        ctx.lineTo(x + 1, y + 1); // Draw a tiny line to mimic a point
+        ctx.lineTo(x + 0, y + 0); // Draw a tiny line to mimic a point
         ctx.stroke();
     }
 
+
+  var ghostDrawerOptions = {
+    canvasBackground: 'transparent', // canvas background color
+    colorLine: '#9bc9b8', // doodle line color
+    lineWidth: 10, // doodle line width
+    cursor: 'https://www.ghostplugins.dev/assets/drawer/a.png', // for a custom cursor, upload your file to CSS files to generate link, file must be 48x48 in size
+    cursorOffset: 50 // adjust if changing the default cursor option
+  } 
+  
     // Event listener for mousemove event on canvas
     document.getElementById('myCanvas').addEventListener('mousemove', draw);
 </script>
