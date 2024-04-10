@@ -185,7 +185,7 @@
         var y = e.clientY - rect.top;
 
         ctx.strokeStyle = 'teal'; // Set line color to teal
-        ctx.lineWidth = 10; // Set line width
+        ctx.lineWidth = 100,20; // Set line width
         ctx.lineCap = 'round'; // Set line cap style
 
         // Start drawing path
@@ -194,6 +194,7 @@
         ctx.lineTo(x + 0, y + 0); // Draw a tiny line to mimic a point
         ctx.stroke();
     }
+
 
 
   var ghostDrawerOptions = {
