@@ -6,6 +6,48 @@
     <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /*grid*/
+        .gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    overflow: auto;
+}
+.modal-content {
+    display: block;
+    margin: auto;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80%;
+}
+.close {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: #ccc;
+}
         /* Gallery styles */
         .gallery img {
             width: 100%;
@@ -127,6 +169,36 @@
                 <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
             </div>
 
+            <!-- Gallery Grid -->
+<div class="container my-4">
+    <div class="row gallery">
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork1.jpg" alt="Artwork 1" class="img-fluid" onclick="openModal('artwork1_large.jpg')">
+        </div>
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork2.jpg" alt="Artwork 2" class="img-fluid" onclick="openModal('artwork2_large.jpg')">
+        </div>
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork3.jpg" alt="Artwork 3" class="img-fluid" onclick="openModal('artwork3_large.jpg')">
+        </div>
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork4.jpg" alt="Artwork 4" class="img-fluid" onclick="openModal('artwork4_large.jpg')">
+        </div>
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork5.jpg" alt="Artwork 5" class="img-fluid" onclick="openModal('artwork5_large.jpg')">
+        </div>
+        <div class="col-sm-6 col-md-4 mb-4">
+            <img src="artwork6.jpg" alt="Artwork 6" class="img-fluid" onclick="openModal('artwork6_large.jpg')">
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Gallery Images -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg">
+</div>
+
             <!-- Canvas -->
             <canvas id="myCanvas" width="800" height="500"></canvas>
         </div>
@@ -158,6 +230,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        //grid
+function openModal(src) {
+    document.getElementById('myModal').style.display = 'block';
+    document.getElementById('modalImg').src = src;
+}
+function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+}
+
         // Modal functions
         function openModal(src) {
             document.getElementById('myModal').style.display = 'block';
