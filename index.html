@@ -68,12 +68,7 @@
             margin-right: auto;
         }
 
-         /* hidden background music */
-    #bgMusic {
-      display: none;
-    }
-
-    /* optional control button */
+          /* optional play/pause button */
     #musicBtn {
       position: fixed;
       bottom: 20px;
@@ -84,12 +79,6 @@
       background: #444;
       color: #fff;
       cursor: pointer;
-    }
-
-    /* spotify embed container */
-    .spotify-embed {
-      max-width: 400px;
-      margin: 40px auto;
     }
     </style>
 </head>
@@ -164,26 +153,15 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <img class="modal-content" id="modalImg">
     </div>
-<!-- 🎵 Hidden autoplay background music (host your own file here) -->
+
+  <!-- 🎵 Your embedded music file -->
   <audio id="bgMusic" autoplay loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
+    <source src="assets/my-song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- 🔘 Button to toggle background music -->
-  <button id="musicBtn">Pause Background</button>
-
-  <!-- 🎧 Visible Spotify player (official embed) -->
-  <div class="spotify-embed">
-    <iframe style="border-radius:12px"
-            src="https://open.spotify.com/track/5VBjyOQzqlPNgdRPMM6prF?si=dfca496612e341ef"
-            width="100%" 
-            height="80" 
-            frameBorder="0" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-    </iframe>
-  </div>
+  <!-- 🔘 Optional control button -->
+  <button id="musicBtn">Pause Music</button>
 
   <script>
     const music = document.getElementById("bgMusic");
@@ -192,14 +170,13 @@
     btn.addEventListener("click", () => {
       if (music.paused) {
         music.play();
-        btn.textContent = "Pause Background";
+        btn.textContent = "Pause Music";
       } else {
         music.pause();
-        btn.textContent = "Play Background";
+        btn.textContent = "Play Music";
       }
     });
   </script>
-
     <footer class="text-center">
         <!-- Your footer content -->
     </footer>
