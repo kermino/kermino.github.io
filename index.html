@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Art Portfolio</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-/* Gallery styles */
-.gallery img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-.gallery img:hover {
-    transform: scale(1.05);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Gallery styles */
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
 
-/* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.8);
-    overflow: auto;
-}
-.modal-content {
-    display: block;
-    margin: auto;
-    width: 80%;
-    max-width: 700px;
-    max-height: 80%;
-}
-.close {
-    color: #fff;
-    position: absolute;
-    top: 10px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.close:hover {
-    color: #ccc;
-}
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+        }
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #ccc;
+        }
 
-/* Canvas styles */
-canvas {
-    border: 1px solid #333;
-    margin-top: 20px;
-    cursor: crosshair;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+        /* Canvas styles */
+        canvas {
+            border: 1px solid #333;
+            margin-top: 20px;
+            cursor: crosshair;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-/* Play/Pause Button */
-#musicBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: #444;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-#musicBtn:hover {
-    background-color: #666;
-    transform: scale(1.05);
-}
-</style>
+        /* Play/Pause Button */
+        #musicBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #444;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #musicBtn:hover {
+            background-color: #666;
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -106,9 +106,15 @@ canvas {
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active"><img class="d-block w-100" src="carousel_image1.jpg" alt="zoo"></div>
-            <div class="carousel-item"><img class="d-block w-100" src="carousel_image2.jpg" alt="wee"></div>
-            <div class="carousel-item"><img class="d-block w-100" src="carousel_image3.jpg" alt="mama"></div>
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="carousel_image1.jpg" alt="zoo">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="carousel_image2.jpg" alt="wee">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="carousel_image3.jpg" alt="mama">
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -120,82 +126,90 @@ canvas {
         </a>
     </div>
 
-    
-    <!-- Gallery Grid -->
-    <div class="gallery row">
-        <div class="col-sm-6 col-md-4 mb-4">
-            <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')">
+    <!-- Gallery -->
+    <div class="content">
+        <div class="gallery">
+            <img src="artwork1.jpg" alt="Artwork 1" onclick="openModal('artwork1_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+            <img src="artwork2.jpg" alt="Artwork 2" onclick="openModal('artwork2_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
+            <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
         </div>
-        <div class="col-sm-6 col-md-4 mb-4">
-            <img src="artwork2.jpg" alt="Artwork 2" onclick="openModal('artwork2_large.jpg')">
+
+        <!-- Modal for Gallery Images -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modalImg">
         </div>
-        <div class="col-sm-6 col-md-4 mb-4">
-            <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')">
-        </div>
+
+        <!-- Canvas -->
+        <canvas id="myCanvas" width="800" height="500"></canvas>
     </div>
 
-    <!-- Modal -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
-    </div>
-
-    <!-- Canvas -->
-    <canvas id="myCanvas" width="800" height="500"></canvas>
-
-    <!-- Background Music -->
+    <!-- Hidden Background Music -->
     <audio id="bgMusic" loop style="display:none;">
         <source src="assets/wave to earth - seasons.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
+    <!-- Play/Pause Button -->
     <button id="musicBtn">Play Music</button>
 
     <!-- Footer -->
     <footer class="text-center mt-4 mb-4">&copy; 2025 kermin</footer>
+
 </div>
 
+<!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-// Modal functions
-function openModal(src) {
-    document.getElementById('myModal').style.display = 'block';
-    document.getElementById('modalImg').src = src;
-}
-function closeModal() {
-    document.getElementById('myModal').style.display = 'none';
-}
-
-// Canvas drawing
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-canvas.addEventListener('mousemove', function(e) {
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y);
-    ctx.strokeStyle = 'teal';
-    ctx.lineWidth = 10;
-    ctx.lineCap = 'round';
-    ctx.stroke();
-});
-
-// Music play/pause
-const music = document.getElementById("bgMusic");
-const btn = document.getElementById("musicBtn");
-btn.addEventListener("click", () => {
-    if (music.paused) {
-        music.play();
-        btn.textContent = "Pause Music";
-    } else {
-        music.pause();
-        btn.textContent = "Play Music";
+    // Modal functions
+    function openModal(src) {
+        document.getElementById('myModal').style.display = 'block';
+        document.getElementById('modalImg').src = src;
     }
-});
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+
+    // Image hover zoom
+    function zoomIn(img) {
+        img.style.transform = 'scale(1.05)';
+        img.style.transition = 'transform 0.3s ease';
+    }
+    function zoomOut(img) {
+        img.style.transform = 'scale(1)';
+    }
+
+    // Canvas drawing
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x, y); // tiny point
+        ctx.strokeStyle = 'teal';
+        ctx.lineWidth = 10;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+    });
+
+    // Background music play/pause
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    btn.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            btn.textContent = "Pause Music";
+        } else {
+            music.pause();
+            btn.textContent = "Play Music";
+        }
+    });
 </script>
 </body>
 </html>
