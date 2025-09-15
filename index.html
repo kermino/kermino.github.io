@@ -6,6 +6,21 @@
     <title>Your Art Portfolio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        /* Header layout: title left, nav right */
+        header .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        header .header-container h1 {
+            margin: 0;
+        }
+        header nav ul {
+            margin: 0;
+        }
+
         /* Gallery styles */
         .gallery img {
             width: 100%;
@@ -51,24 +66,19 @@
             color: #ccc;
         }
 
-        /* Canvas styles */
+        /* Canvas hidden */
         canvas {
-            border: 1px solid #333;
-            margin-top: 20px;
-            cursor: crosshair;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
+            display: none;
         }
 
-        /* Rounded bottom-right Play/Pause button */
+        /* Play/Pause Button - less rounded corners */
         #musicBtn {
             position: fixed;
             bottom: 20px;
             right: 20px;
             padding: 12px 20px;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px; /* less rounded than before */
             background-color: #444;
             color: #fff;
             font-size: 16px;
@@ -85,11 +95,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header & Navigation -->
-        <header class="text-center mt-4 mb-4">
+        <!-- Header: title left, nav right -->
+        <header class="header-container">
             <h1>Your Art Portfolio</h1>
             <nav>
-                <ul class="nav justify-content-center">
+                <ul class="nav">
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#archive">Archive</a></li>
@@ -127,7 +137,7 @@
                 <img src="artwork3.jpg" alt="Artwork 3" onclick="openModal('artwork3_large.jpg')" onmouseover="zoomIn(this)" onmouseout="zoomOut(this)">
             </div>
 
-            <!-- Canvas -->
+            <!-- Canvas is hidden -->
             <canvas id="myCanvas" width="800" height="500"></canvas>
         </div>
 
@@ -176,7 +186,7 @@
             img.style.transform = 'scale(1)';
         }
 
-        // Canvas drawing
+        // Canvas drawing (hidden)
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
         canvas.addEventListener('mousemove', function(e) {
